@@ -1,22 +1,27 @@
 'use client';
 
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Virtual } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
+
+// Define a TypeScript interface for the props
+interface ListItemsProps {
+  geners: string;
+}
 
 const slides = Array.from({ length: 20 }).map(
   (el, index) => `Slide ${index + 1}`
 );
 
-function ListItems(props) {
+function ListItems({ geners }: ListItemsProps) { // Use the interface here
   return (
     <>
       <div className="ItemGeners mt-2">
         <div className="Geners flex items-center mb-2 space-x-2">
           <span className="w-1.5 rounded-full h-6 bg-white"></span>
-          <p>{props.geners}</p>
+          <p>{geners}</p>
         </div>
         <Swiper navigation={true} modules={[Navigation]} grabCursor={true} slidesPerView={3} spaceBetween={4}>
           {slides.map((slideContent, index) => (
@@ -30,11 +35,11 @@ function ListItems(props) {
         </Swiper>
       </div>
     </>
-  )
+  );
 }
 
 ListItems.propTypes = {
-  geners: PropTypes.string,
+  geners: PropTypes.string.isRequired, // Marking geners as required in prop types
 }
 
-export default ListItems
+export default ListItems;

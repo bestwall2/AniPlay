@@ -1,8 +1,8 @@
 import React from "react";
 
-import Slider from "./Slider.tsx";
-import ListItems from "./ListItems.tsx";
-import Navbar from "./NavBar.tsx";
+import Slider from "./Slider";
+import ListItems from "./ListItems";
+import Navbar from "./NavBar";
 
 const FirstPage = () => {
   return (
