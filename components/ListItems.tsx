@@ -21,9 +21,10 @@ interface Anime {
   id: number;
   title: { english: string | null; romaji: string | null };
   format: string;
-  year: number | null;
+  
   coverImage: { large: string };
   averageScore: number | null;
+  startDate: { year: number } | null;  //
 }
 
 const ListItems = ({ geners , apiPath}: ListItemsProps) => {
