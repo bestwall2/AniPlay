@@ -1,5 +1,3 @@
-
-
 import Image from 'next/image';
 import React, { useState } from "react";
 
@@ -12,7 +10,7 @@ interface ListItemsProps {
 }
 
 const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img, showBadge , cardbadge }) => {
-  const [hidden, setHidden] = useState(showBadge);
+  const [hidden] = useState(showBadge);
 
   return (
     <div className="Listcontainer relative transition-transform ease-in delay-2 hover:scale-90 rounded-2xl">
