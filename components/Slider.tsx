@@ -22,6 +22,7 @@ interface Anime {
   averageScore: number | null;
   format: string;
   status: string;
+  description: string;
   startDate: { year: number; month: number; day: number };
 }
 
