@@ -21,7 +21,7 @@ const Slider = () => {
         {slides.map((slideContent, index) => (
           <SwiperSlide key={slideContent} virtualIndex={index}>
             <div className="container">
-              <img src="https://cdna.artstation.com/p/assets/images/images/003/814/626/large/mark-valeri-your-lie-in-april-mange-front-cover.jpg?1477615815" alt="" landing="lazy"/>
+              <img src="https://cdna.artstation.com/p/assets/images/images/003/814/626/large/mark-valeri-your-lie-in-april-mange-front-cover.jpg?1477615815"/>
               <div className="ContainerLayout">
               </div>
               <div className="InfoContainer m-4 text-left">
