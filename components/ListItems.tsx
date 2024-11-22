@@ -63,7 +63,7 @@ const ListItems = ({ geners , apiPath}: ListItemsProps) => {
                   
                   cardbadge={anime.averageScore ? anime.averageScore.toFixed(1) : "N/A"}
                   title={anime.title.english || anime.title.romaji || "Unknown Title"}
-                  info={`${anime.format} • ${anime.startDate.year || "Unknown Year"} • ${anime.episodes}`}
+                  info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes}`}
                   img={anime.coverImage.large}
                 />
               </SwiperSlide>
