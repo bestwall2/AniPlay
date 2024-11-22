@@ -21,7 +21,8 @@ interface Anime {
   id: number;
   title: { english: string | null; romaji: string | null };
   format: string;
-  
+  year: number;
+  episodes: number;
   coverImage: { large: string };
   averageScore: number | null;
   startDate: { year: number } | null;  //
