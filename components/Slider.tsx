@@ -18,7 +18,7 @@ import { FaStar } from "react-icons/fa6";
 interface Anime {
   id: number;
   title: { english: string | null; romaji: string | null };
-  coverImage: { large: string };
+  coverImage: { large: string | null; extraLarge: string | null };
   averageScore: number | null;
   format: string;
   status: string;
