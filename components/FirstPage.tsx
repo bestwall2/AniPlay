@@ -20,7 +20,7 @@ const FirstPage = () => {
             <ListItems geners="All Time Trending"/>
           </div>
         </div>
-        <div className="mt-8 m-4">
+        <div className="mt-8 ml-4 mb-4 mr-0">
           <Footer />
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Button } from "./ui/button"
 // Import Swiper styles
 
 import "swiper/css";
+import "swiper/css/free-mode";
 import "swiper/css/effect-coverflow";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
@@ -38,7 +39,7 @@ const Slider = () => {
                     <MdDateRange className="m-1 self-center" size={13} />
                     Nov 13 , 2024</h1>
                 </div>
-                  <Button className="rounded-full" variant="styled">
+                  <Button className="SliderButton rounded-full" variant="styled">
                     <FaPlayCircle /> Play Now
                   </Button>
               </div>
