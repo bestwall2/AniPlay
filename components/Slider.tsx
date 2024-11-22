@@ -1,52 +1,110 @@
 'use client';
-//shadcn styles
 
-import { Button } from "./ui/button"
+// Shadcn styles
+import { Button } from "./ui/button";
 // Import Swiper styles
-
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/effect-coverflow";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow , Autoplay} from "swiper/modules"
-const slides = Array.from({ length: 20 }).map(
-  (el, index) => `Slide ${index + 1}`
-);
+import { EffectCoverflow, Autoplay } from "swiper/modules";
+import { FaStar } from "react-icons/fa6";
+
+// Define the type for API response data
+interface Anime {
+  id: number;
+  title: { english: string | null; romaji: string | null };
+  coverImage: { large: string };
+  averageScore: number | null;
+  format: string;
+  status: string;
+  startDate: { year: number; month: number; day: number };
+}
 
 const Slider = () => {
+  const [animeList, setAnimeList] = useState<Anime[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Fetch popular anime data from the API
+  useEffect(() => {
+    const fetchAnime = async () => {
+      try {
+        const response = await fetch('/api/popular-anime');
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setAnimeList(data.Page?.media.slice(0,5) || []); // Ensure data is extracted correctly
+      } catch (error) {
+        console.error("Error fetching popular anime:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAnime();
+  }, []);
+
   return (
     <>
-      <Swiper autoplay={{delay:5000, disableOnInteraction:false}} loop={true} modules={[EffectCoverflow,Autoplay]} slidesPerView={'auto'} effect="coverflow" spaceBetween={0}>
-        {slides.map((slideContent, index) => (
-          <SwiperSlide key={slideContent} virtualIndex={index}>
-            <div className="container">
-              <img src="https://cdna.artstation.com/p/assets/images/images/003/814/626/large/mark-valeri-your-lie-in-april-mange-front-cover.jpg?1477615815"/>
-              <div className="ContainerLayout">
-              </div>
-              <div className="InfoContainer m-4 text-left">
-                <h2 className="Trending text-pink-600 ">#1 Trending</h2>
-                <h1 className="Title">Seirei Gensouki: Sprit Chronicles Season 2</h1>
-                <div className="Addtion mb-2 space-x-3 h-auto">
-                  <h1>
-                    <FaPlayCircle className="m-1 self-center" size={13} />
-                    TV
-                  </h1>
-                  <h1 className="State text-green-500 ">
-                    RELEASING</h1>
-                  <h1>
-                    <MdDateRange className="m-1 self-center" size={13} />
-                    Nov 13 , 2024</h1>
+      {loading ? (
+        <p className="text-gray-500">Loading...</p>
+      ) : (
+        <Swiper
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          loop={true}
+          modules={[EffectCoverflow, Autoplay]}
+          slidesPerView={'auto'}
+          effect="coverflow"
+          spaceBetween={0}
+        >
+          {animeList.map((anime) => (
+            <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
+              <div className="container">
+                <Image
+                    src={anime.coverImage.extraLarge}
+                    alt={anime.title.english || anime.title.romaji || "Unknown Title"}
+                    layout="responsive"
+                    width={500}
+                    height={300}
+                  />
+                <div className="ContainerLayout"></div>
+                <div className="InfoContainer m-4 text-left">
+                <div className="flex items-center justify-start">
+                <FaStar size={15} style={{color:"yellow"}}/>
+                  <h2 className="Trending pl-1 pt-1 text-yellow-400">{anime.averageScore ? anime.averageScore.toFixed(1) : "N/A"}</h2>
                 </div>
+                  <h1 className="Title">{anime.title.english || anime.title.romaji || "Unknown Title"}</h1>
+                  <p className="Description text-sm w-auto block-words mt-1 mb-1 line-clamp-5 text-gray-400">{anime.description}</p>
+                  <div className="Addtion mb-2 space-x-3 h-auto">
+                    <h1>
+                      <FaPlayCircle className="m-1 self-center" size={13} />
+                      {anime.format || "Unknown Format"}
+                    </h1>
+                    <h1 className={`State ${anime.status === "RELEASING" ? "text-green-500" : "text-red-500"}`}>
+                      {anime.status || "Unknown Status"}
+                    </h1>
+                    <h1>
+                      <MdDateRange className="m-1 self-center" size={13} />
+                      {anime.startDate
+                        ? `${anime.startDate.year} ${anime.startDate.month}, ${anime.startDate.day}`
+                        : "Unknown Date"}
+                    </h1>
+                  </div>
                   <Button className="SliderButton rounded-full" variant="styled">
                     <FaPlayCircle /> Play Now
                   </Button>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </>
   );
 };

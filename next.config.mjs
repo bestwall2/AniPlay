@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["cdna.artstation.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdna.artstation.com', // Optional: Specify hostname if needed
+      },
+      {
+        protocol: 'https',
+        hostname: 's4.anilist.co', // Optional: Specify hostname if needed
+      },
+    ],
   },
 };
 

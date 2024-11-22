@@ -15,9 +15,9 @@ const FirstPage = () => {
         <div className="flex-1 overflow-auto">
           <Slider />
           <div className="Items container mx-auto p-4 pt-2 pb-0 flex flex-col">
-            <ListItems geners="Last Episodes"/>
-            <ListItems geners="Popular Animes"/>
-            <ListItems geners="All Time Trending"/>
+            <ListItems geners="Last Episodes" apiPath="/api/trending-anime"/>
+            <ListItems geners="Popular Animes" apiPath="/api/popular-anime"/>
+            <ListItems geners="All Time Trending" apiPath="/api/trending-anime"/>
           </div>
         </div>
         <div className="mt-8 ml-4 mb-4 mr-0">
