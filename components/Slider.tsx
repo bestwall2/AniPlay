@@ -3,12 +3,13 @@
 
 import { Button } from "./ui/button"
 // Import Swiper styles
-import "swiper/css/effect-coverflow";
+
 import "swiper/css";
+import "swiper/css/effect-coverflow";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination } from "swiper/modules"
+import { EffectCoverflow , Autoplay} from "swiper/modules"
 const slides = Array.from({ length: 20 }).map(
   (el, index) => `Slide ${index + 1}`
 );
@@ -16,11 +17,11 @@ const slides = Array.from({ length: 20 }).map(
 const Slider = () => {
   return (
     <>
-      <Swiper pagination={true} modules={[Pagination, EffectCoverflow]} slidesPerView={'auto'} grabCursor={true} effect={'coverflow'} spaceBetween={0}>
+      <Swiper autoplay={{delay:5000, disableOnInteraction:false}} loop={true} modules={[EffectCoverflow,Autoplay]} slidesPerView={'auto'} effect="coverflow" spaceBetween={0}>
         {slides.map((slideContent, index) => (
           <SwiperSlide key={slideContent} virtualIndex={index}>
             <div className="container">
-              <img src="https://cdna.artstation.com/p/assets/images/images/003/814/626/large/mark-valeri-your-lie-in-april-mange-front-cover.jpg?1477615815" alt="" />
+              <img src="https://cdna.artstation.com/p/assets/images/images/003/814/626/large/mark-valeri-your-lie-in-april-mange-front-cover.jpg?1477615815" alt="" landing="lazy"/>
               <div className="ContainerLayout">
               </div>
               <div className="InfoContainer m-4 text-left">

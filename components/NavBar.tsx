@@ -9,7 +9,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > scrollY && window.scrollY > 50) {
-        setHidden(false); // Hide navbar on scroll down
+        setHidden(true); // Hide navbar on scroll down
       } else {
         setHidden(false); // Show navbar on scroll up
       }
@@ -34,7 +34,7 @@ const Navbar = () => {
           >
             <img
               src="https://aniplaynow.live/logo.svg"
-              className="h-8"
+              className="h-9"
               alt="AniPlay"
             />
           </a>

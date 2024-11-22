@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "./Slider";
 import ListItems from "./ListItems";
 import Navbar from "./NavBar";
-
+import Footer from "./Footer";
 const FirstPage = () => {
   return (
     <>
@@ -20,6 +20,7 @@ const FirstPage = () => {
             <ListItems geners="All Time Trending"/>
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );
