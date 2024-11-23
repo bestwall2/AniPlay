@@ -16,16 +16,18 @@ const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img, cardbadge })
   return (
     <div className="Listcontainer relative transition-transform ease-in delay-2 hover:scale-90 rounded-2xl">
       {/* Optimized Next.js Image */}
+      
       <Image
         src={img}
         alt={title}
-        layout="responsive"
-        width={500}
-        height={300}
+        layout="fill"
+        objectFit="cover"
+
       />
+      
       <div className="CardShadow absolute">
         <p className="Title  absolute  content-center  text-center line-clamp-2"> {title} </p>
-        <p className="MoreInfo text-gray-300 absolute  bottom-0"> {info} </p>
+        <p className="MoreInfo text-gray-300 absolute line-clamp-1 bottom-0"> {info} </p>
         <div className="CardBadge flex items-center justify-start">
            <p className="CardBadgeText self-center">{cardbadge}</p>
            <FaStar className="" size={12} style={{ color: "yellow",padding: 1}}/>

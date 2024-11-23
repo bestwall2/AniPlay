@@ -8,6 +8,7 @@ import Image from 'next/image';
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/effect-coverflow";
+import { FaPlay } from "react-icons/fa";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -60,6 +61,7 @@ const Slider = () => {
       ) : (
         <Swiper
           autoplay={{ delay: 5000, disableOnInteraction: false }}
+          speed={999}
           loop={true}
           modules={[EffectCoverflow, Autoplay]}
           slidesPerView={'auto'}
@@ -100,7 +102,7 @@ const Slider = () => {
                     </h1>
                   </div>
                   <Button className="SliderButton rounded-full" variant="styled">
-                    <FaPlayCircle /> Play Now
+                    <FaPlay size={12} /> Play Now
                   </Button>
                 </div>
               </div>
