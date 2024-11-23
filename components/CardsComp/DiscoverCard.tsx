@@ -20,9 +20,7 @@ const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img, cardbadge })
       <Image
         src={img}
         alt={title}
-        layout="fill"
-        objectFit="cover"
-
+        layout="responsive"
       />
       
       <div className="CardShadow absolute">
