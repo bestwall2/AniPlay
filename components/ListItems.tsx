@@ -59,7 +59,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
         {loading ? (
         
           <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.6} spaceBetween={4} navigation={true} freeMode={true}>
-            {Array.from({ length: 25 }).map((_, index) => (
+            {Array.from({ length: 10 }).map((_, index) => (
               <SwiperSlide key={`skeleton-${index}`}>
                 <Skeleton className="SkeletonCard h-[27vh] w-[125px] rounded-lg" />
               </SwiperSlide>
