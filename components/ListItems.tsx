@@ -70,7 +70,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
             {animeList.map((anime) => (
               <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
                 <DiscoverCard
-                  cardbadge={anime.averageScore ? (Number.isInteger(anime.averageScore) ? anime.averageScore : anime.averageScore.toFixed(1)) : "N/A"}
+                  cardbadge={anime.averageScore ? anime.averageScore.toString() : "N/A"}
                   title={anime.title.english || anime.title.romaji || "Unknown Title"}
                   info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
                   img={anime.coverImage.large}
