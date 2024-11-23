@@ -24,7 +24,7 @@ interface Anime {
   format: string;
   year: number;
   episodes: number;
-  coverImage: { large: string };
+  coverImage: { large: string | null; extraLarge: string };
   averageScore: number | null;
   startDate: { year: number } | null;
 }
@@ -73,7 +73,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
                   cardbadge={anime.averageScore ? anime.averageScore.toString() : "N/A"}
                   title={anime.title.english || anime.title.romaji || "Unknown Title"}
                   info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
-                  img={anime.coverImage.large}
+                  img={anime.coverImage.extraLarge}
                 />
               </SwiperSlide>
             ))}
