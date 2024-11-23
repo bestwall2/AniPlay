@@ -5,12 +5,15 @@ import React, { useState, useEffect } from "react";
 const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
   const [hidden, setHidden] = useState(false);
+  
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > scrollY && window.scrollY > 50) {
-        setHidden(true); // Hide navbar on scroll down
+        
+        setHidden(false); // Hide navbar on scroll down
       } else {
+        
         setHidden(false); // Show navbar on scroll up
       }
       setScrollY(window.scrollY);
@@ -23,11 +26,11 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`NavBarLayout border-gray-200 dark:bg-gray-900 fixed top-0 left-0 w-full z-50 transition-transform ${
+        className={`NavBarLayout rounded-bl-lg rounded-br-lg border-gray-200 dark:bg-gray-900 fixed top-0 left-0 w-full z-50 transition-transform ${
           hidden ? "-translate-y-full" : "translate-y-0"
         }`}
       >
-        <div className="container max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div className="container   max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
