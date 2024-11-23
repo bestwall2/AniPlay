@@ -1,8 +1,9 @@
 
-import { PopularAnimeQuery , TrendingAnimeQuery } from "../actions/QueryActions";
+import { PopularAnimeQuery , favouritesAnimeQuery , TrendingAnimeQuery , top100AnimeQuery } from "../actions/QueryActions";
 
 const API_URL = "https://graphql.anilist.co";
 
+// for Trending Anime
 export const fetchTrendingAnime = async () => {
   try {
     const response = await fetchAniList(
@@ -18,6 +19,7 @@ export const fetchTrendingAnime = async () => {
   }
 };
 
+//for Popular Anime
 export const fetchPopularAnime = async () => {
   try {
     const response = await fetchAniList(
@@ -33,6 +35,38 @@ export const fetchPopularAnime = async () => {
   }
 };
 
+// for 100 best Anime 
+export const fetchTopAnime = async () => {
+  try {
+    const response = await fetchAniList(
+      top100AnimeQuery
+    );
+    return response.data || []; // Return data if present
+  } catch (error) {
+    console.error(
+      "Error fetching trending anime:",
+      error
+    );
+    return []; // Fallback in case of failure
+  }
+};
+// for Favorite Anime list
+export const fetchFavouritesAnime = async () => {
+  try {
+    const response = await fetchAniList(
+      favouritesAnimeQuery
+    );
+    return response.data || []; // Return data if present
+  } catch (error) {
+    console.error(
+      "Error fetching trending anime:",
+      error
+    );
+    return []; // Fallback in case of failure
+  }
+};
+
+//fetching func 
 const fetchAniList = async query => {
   try {
     const response = await fetch(API_URL, {

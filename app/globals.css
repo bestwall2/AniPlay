@@ -185,19 +185,20 @@ body {
   width: auto;
   padding-left: 5px;
   padding-right: 5px;
-  border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
+  
   height: fit-content;
   background: #000000b7;
   position: absolute;
-  top: 50%;
+  top: 46%;
   right: 0;
   
 }
 .Listcontainer {
   height: 27vh;
 }
+
 .SliderButton{
   font-size: 18px;
 }

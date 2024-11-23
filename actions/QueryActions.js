@@ -99,6 +99,10 @@ export let top100AnimeQuery = `
 				averageScore
 				description
 				episodes
+				format
+				startDate{
+				  year
+				}
 				
 			}
 		}
@@ -131,6 +135,10 @@ export let favouritesAnimeQuery = `
 				averageScore
 				description
 				episodes
+				format
+				startDate{
+				  year
+				}
 			}
 		}
 	}

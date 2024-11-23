@@ -13,6 +13,8 @@ import { MdDateRange } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import { FaStar } from "react-icons/fa6";
+import { Skeleton } from "./ui/skeleton";
+
 
 // Define the type for API response data
 interface Anime {
@@ -40,7 +42,7 @@ const Slider = () => {
         }
 
         const data = await response.json();
-        setAnimeList(data.Page?.media.slice(0,5) || []); // Ensure data is extracted correctly
+        setAnimeList(data.Page?.media.slice(0, 5) || []); // Ensure data is extracted correctly
       } catch (error) {
         console.error("Error fetching popular anime:", error);
       } finally {
@@ -53,8 +55,8 @@ const Slider = () => {
 
   return (
     <>
-      {loading ? (
-        <p className="text-gray-500">Loading...</p>
+      {loading ? (      
+        <Skeleton className="SkeletonCard h-[65vh] w-[100%]" />
       ) : (
         <Swiper
           autoplay={{ delay: 5000, disableOnInteraction: false }}
@@ -68,18 +70,18 @@ const Slider = () => {
             <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
               <div className="container">
                 <Image
-                    src={anime.coverImage.extraLarge}
-                    alt={anime.title.english || anime.title.romaji || "Unknown Title"}
-                    layout="responsive"
-                    width={500}
-                    height={300}
-                  />
+                  src={anime.coverImage.extraLarge}
+                  alt={anime.title.english || anime.title.romaji || "Unknown Title"}
+                  layout="responsive"
+                  width={500}
+                  height={300}
+                />
                 <div className="ContainerLayout"></div>
                 <div className="InfoContainer m-4 text-left">
-                <div className="flex items-center justify-start">
-                <FaStar size={15} style={{color:"yellow"}}/>
-                  <h2 className="Trending pl-1 pt-1 text-yellow-400">{anime.averageScore ? anime.averageScore.toFixed(1) : "N/A"}</h2>
-                </div>
+                  <div className="flex items-center justify-start">
+                    <FaStar size={15} style={{ color: "yellow" }} />
+                    <h2 className="Trending pl-1 pt-1 text-yellow-400">{anime.averageScore ? anime.averageScore.toFixed(1) : "N/A"}</h2>
+                  </div>
                   <h1 className="Title">{anime.title.english || anime.title.romaji || "Unknown Title"}</h1>
                   <p className="Description text-sm w-auto block-words mt-1 mb-1 line-clamp-5 text-gray-400">{anime.description}</p>
                   <div className="Addtion mb-2 space-x-3 h-auto">

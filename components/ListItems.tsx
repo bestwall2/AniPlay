@@ -9,6 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css";
 import { FreeMode } from "swiper/modules";
 import DiscoverCard from "./CardsComp/DiscoverCard";
+import { Skeleton } from "./ui/skeleton";
 
 // Define TypeScript interface for props
 interface ListItemsProps {
@@ -25,10 +26,10 @@ interface Anime {
   episodes: number;
   coverImage: { large: string };
   averageScore: number | null;
-  startDate: { year: number } | null;  //
+  startDate: { year: number } | null;
 }
 
-const ListItems = ({ geners , apiPath}: ListItemsProps) => {
+const ListItems = ({ geners, apiPath }: ListItemsProps) => {
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -37,7 +38,7 @@ const ListItems = ({ geners , apiPath}: ListItemsProps) => {
     const fetchAnime = async () => {
       try {
         const data = await fetch(apiPath).then((res) => res.json());
-        setAnimeList(data.Page?.media.slice(0,25)  || []); // Ensure the response has a `data` field
+        setAnimeList(data.Page?.media.slice(0, 25) || []); // Ensure the response has a `data` field
       } catch (error) {
         console.error('Error fetching anime:', error);
       } finally {
@@ -46,7 +47,7 @@ const ListItems = ({ geners , apiPath}: ListItemsProps) => {
     };
 
     fetchAnime();
-  }, []);
+  }, [apiPath]);
 
   return (
     <>
@@ -56,16 +57,22 @@ const ListItems = ({ geners , apiPath}: ListItemsProps) => {
           <p>{geners}</p>
         </div>
         {loading ? (
-          <p className="text-gray-500">Loading...</p>
+        
+          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.6} spaceBetween={4} navigation={true} freeMode={true}>
+            {Array.from({ length: 10 }).map((_, index) => (
+              <SwiperSlide key={`skeleton-${index}`}>
+                <Skeleton className="SkeletonCard h-[27vh] w-[125px] rounded-lg" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         ) : (
           <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.6} spaceBetween={4} navigation={true} freeMode={true}>
             {animeList.map((anime) => (
               <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
                 <DiscoverCard
-                  
-                  cardbadge={anime.averageScore ? anime.averageScore.toFixed(1) : "N/A"}
+                  cardbadge={anime.averageScore ? (Number.isInteger(anime.averageScore) ? anime.averageScore : anime.averageScore.toFixed(1)) : "N/A"}
                   title={anime.title.english || anime.title.romaji || "Unknown Title"}
-                  info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes}`}
+                  info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
                   img={anime.coverImage.large}
                 />
               </SwiperSlide>
@@ -79,9 +86,8 @@ const ListItems = ({ geners , apiPath}: ListItemsProps) => {
 
 // Prop types for fallback validation
 ListItems.propTypes = {
-  geners: PropTypes.string.isRequired, 
-  apiPath: PropTypes.string.isRequired, 
-  // Marking geners as required
+  geners: PropTypes.string.isRequired,
+  apiPath: PropTypes.string.isRequired, // Marking geners as required
 };
 
 export default ListItems;

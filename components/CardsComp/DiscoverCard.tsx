@@ -1,16 +1,17 @@
 import Image from 'next/image';
 import React from "react";
+import { FaStar } from "react-icons/fa6";
 
 interface ListItemsProps {
   title: string;
   info: string;
   img: string;
   cardbadge: string;
-   // Ensure "boolean" is lowercase in TypeScript
+  // Ensure "boolean" is lowercase in TypeScript
 }
 
-const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img , cardbadge }) => {
-  
+const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img, cardbadge }) => {
+
 
   return (
     <div className="Listcontainer relative transition-transform ease-in delay-2 hover:scale-90 rounded-2xl">
@@ -25,7 +26,10 @@ const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img , cardbadge }
       <div className="CardShadow absolute">
         <p className="Title  absolute  content-center  text-center line-clamp-2"> {title} </p>
         <p className="MoreInfo text-gray-300 absolute  bottom-0"> {info} </p>
-        <p className="CardBadge">{cardbadge}</p>
+        <div className="CardBadge flex items-center justify-start">
+           <p className="CardBadgeText self-center">{cardbadge}</p>
+           <FaStar className="" size={12} style={{ color: "yellow",padding: 1}}/>
+        </div>
       </div>
     </div>
   );
