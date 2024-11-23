@@ -14,7 +14,7 @@ const DiscoverCard: React.FC<ListItemsProps> = ({ title, info, img, cardbadge })
 
 
   return (
-    <div className="Listcontainer relative transition-transform ease-in delay-2 hover:scale-90 rounded-2xl">
+    <div className="Listcontainer  relative transition-transform ease-in delay-2 hover:scale-90 rounded-2xl">
       {/* Optimized Next.js Image */}
       
       <Image

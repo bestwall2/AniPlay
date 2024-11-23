@@ -199,13 +199,13 @@ body {
   height: fit-content;
   background: #000000b7;
   position: absolute;
-  top: 46%;
+  top: 56%;
   right: 0;
   
 }
 
 .Listcontainer {
-   height: 27vh;
+   height: 22vh;
 }
 
 .SliderButton{
