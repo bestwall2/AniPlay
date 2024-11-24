@@ -5,16 +5,10 @@ import { BiSolidCategory } from "react-icons/bi";
 import { FiSettings, FiUser, FiSearch, FiInfo } from "react-icons/fi"; // Import icons
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
+  DropdownMenuContent,  
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
