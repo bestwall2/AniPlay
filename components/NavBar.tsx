@@ -70,7 +70,7 @@ const Navbar = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <div
-            className="bg-gray-900 w-[50px] shadow-md transition-transform ease-in delay-2 hover:scale-90 flex items-center justify-center h-[50px] fixed rounded-full bottom-0 mb-5 left-10 z-50"
+            className="bg-fuchsia-900 w-[50px] shadow-md transition-transform ease-in delay-2 hover:scale-90 flex items-center justify-center h-[50px] fixed rounded-full bottom-0 mb-5 left-10 z-50"
           >
             <BiSolidCategory size={22} />
           </div>
