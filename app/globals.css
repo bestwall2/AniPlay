@@ -182,8 +182,10 @@ body {
     #00000000,
     #00000000
   );
-  height: 50vh; 
+  height: 49vh; 
   width: 100%;
+  margin-bottom:0px;
+  margin-top:auto;
 }
 
 .CardBadge {
@@ -197,13 +199,13 @@ body {
   height: fit-content;
   background: #000000b7;
   position: absolute;
-  top: 56%;
+  top: 51%;
   right: 0;
   
 }
 
 .Listcontainer {
-   height: 22vh;
+   height: 24vh;
 }
 
 .SliderButton{

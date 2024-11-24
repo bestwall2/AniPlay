@@ -58,7 +58,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
         </div>
         {loading ? (
         
-          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.8} spaceBetween={4} navigation={true} freeMode={true}>
+          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.9} spaceBetween={4} navigation={true} freeMode={true}>
             {Array.from({ length: 10 }).map((_, index) => (
               <SwiperSlide key={`skeleton-${index}`}>
                 <Skeleton className="SkeletonCard h-[22vh] w-[110px] rounded-lg" />
@@ -66,7 +66,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
             ))}
           </Swiper>
         ) : (
-          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.8} spaceBetween={4} navigation={true} freeMode={true}>
+          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.9} spaceBetween={4} navigation={true} freeMode={true}>
             {animeList.map((anime) => (
               <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
                 <DiscoverCard
