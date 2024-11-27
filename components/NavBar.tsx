@@ -44,7 +44,7 @@ const Navbar = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
-              src="./app/images/logo.svg"
+              src="../app/images/logo.svg"
               className="h-9"
               alt="AniPlay"
             />
