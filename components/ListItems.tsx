@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
@@ -40,7 +40,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
         const data = await fetch(apiPath).then((res) => res.json());
         setAnimeList(data.Page?.media.slice(0, 25) || []); // Ensure the response has a `data` field
       } catch (error) {
-        console.error('Error fetching anime:', error);
+        console.error("Error fetching anime:", error);
       } finally {
         setLoading(false);
       }
@@ -57,8 +57,13 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
           <p>{geners}</p>
         </div>
         {loading ? (
-        
-          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.9} spaceBetween={4} navigation={true} freeMode={true}>
+          <Swiper
+            modules={[Navigation, FreeMode]}
+            slidesPerView={2.9}
+            spaceBetween={4}
+            navigation={true}
+            freeMode={true}
+          >
             {Array.from({ length: 10 }).map((_, index) => (
               <SwiperSlide key={`skeleton-${index}`}>
                 <Skeleton className="SkeletonCard h-[22vh] w-[110px] rounded-lg" />
@@ -66,12 +71,22 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
             ))}
           </Swiper>
         ) : (
-          <Swiper modules={[Navigation, FreeMode]} slidesPerView={2.9} spaceBetween={4} navigation={true} freeMode={true}>
+          <Swiper
+            modules={[Navigation, FreeMode]}
+            slidesPerView={2.9}
+            spaceBetween={4}
+            navigation={true}
+            freeMode={true}
+          >
             {animeList.map((anime) => (
               <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
                 <DiscoverCard
-                  cardbadge={anime.averageScore ? anime.averageScore.toString() : "N/A"}
-                  title={anime.title.english || anime.title.romaji || "Unknown Title"}
+                  cardbadge={
+                    anime.averageScore ? anime.averageScore.toString() : "N/A"
+                  }
+                  title={
+                    anime.title.english || anime.title.romaji || "Unknown Title"
+                  }
                   info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
                   img={anime.coverImage.extraLarge}
                 />

@@ -5,12 +5,13 @@ import { BiSolidCategory } from "react-icons/bi";
 import { FiSettings, FiUser, FiSearch, FiInfo } from "react-icons/fi"; // Import icons
 import {
   DropdownMenu,
-  DropdownMenuContent,  
+  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -33,7 +34,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`NavBarLayout rounded-bl-lg rounded-br-lg border-gray-200 dark:bg-gray-900 fixed top-0 left-0 w-full z-50 transition-transform ${
+        className={`NavBarLayout rounded-bl-lg rounded-br-lg bg-blue-900 fixed top-0 left-0 w-full z-50 transition-transform ${
           hidden ? "-translate-y-full" : "translate-y-0"
         }`}
       >
@@ -43,40 +44,47 @@ const Navbar = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img
-              src="https://aniplaynow.live/logo.svg"
+              src="./app/images/logo.svg"
               className="h-9"
               alt="AniPlay"
             />
           </a>
-          <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="flex items-center md:order-0 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <button
               type="button"
-              className="flex text-sm rounded-full md:me-0 focus:ring-2"
+              className="flex text-sm rounded-full md:me-0 focus:outline-none   "
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="user-dropdown"
               data-dropdown-placement="bottom"
             >
-              <span className="sr-only">Open user menu</span>
-              <img
-                className="w-10 h-10 rounded-full border-fuchsia-600 border-2"
-                src="https://cdn.imgchest.com/files/l7lxcgnrl57.png"
-                alt="user photo"
-              />
+              <div className="flex items-center space-x-3">
+                <div className="bg-blue-800 transition-transform ease-in delay-2 hover:scale-90 shadow-xl rounded-xl p-2">
+                  <FaSearch size={20} />
+                </div>
+
+                <img
+                  className="w-10 h-10 transition-transform ease-in delay-2 hover:scale-90 rounded-full border-gray-600 border-2"
+                  src="https://cdn.imgchest.com/files/l7lxcgnrl57.png"
+                  alt="user photo"
+                />
+              </div>
             </button>
           </div>
         </div>
       </nav>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div
-            className="bg-fuchsia-900 w-[50px] shadow-md transition-transform ease-in delay-2 hover:scale-90 flex items-center justify-center h-[50px] fixed rounded-full bottom-0 mb-5 left-10 z-50"
-          >
+          <div className="bg-blue-800 shadow-xl w-[50px]  transition-transform ease-in delay-2 hover:scale-90 flex items-center justify-center h-[50px] fixed rounded-full bottom-0 mb-5 left-10 z-50">
             <BiSolidCategory size={22} />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuPortal>
-          <DropdownMenuContent align="start" sideOffset={5} className="z-50 backdrop-blur-xl">
+          <DropdownMenuContent
+            align="start"
+            sideOffset={5}
+            className="z-50 backdrop-blur-xl"
+          >
             <DropdownMenuLabel>Main</DropdownMenuLabel>
             <DropdownMenuItem>
               <FiSettings className="mr-2" /> Settings

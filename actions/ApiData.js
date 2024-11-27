@@ -1,20 +1,19 @@
-
-import { PopularAnimeQuery , favouritesAnimeQuery , TrendingAnimeQuery , top100AnimeQuery } from "../actions/QueryActions";
+import {
+  PopularAnimeQuery,
+  favouritesAnimeQuery,
+  TrendingAnimeQuery,
+  top100AnimeQuery,
+} from "../actions/QueryActions";
 
 const API_URL = "https://graphql.anilist.co";
 
 // for Trending Anime
 export const fetchTrendingAnime = async () => {
   try {
-    const response = await fetchAniList(
-      TrendingAnimeQuery
-    );
+    const response = await fetchAniList(TrendingAnimeQuery);
     return response.data || []; // Return data if present
   } catch (error) {
-    console.error(
-      "Error fetching trending anime:",
-      error
-    );
+    console.error("Error fetching trending anime:", error);
     return []; // Fallback in case of failure
   }
 };
@@ -22,87 +21,61 @@ export const fetchTrendingAnime = async () => {
 //for Popular Anime
 export const fetchPopularAnime = async () => {
   try {
-    const response = await fetchAniList(
-      PopularAnimeQuery
-    );
+    const response = await fetchAniList(PopularAnimeQuery);
     return response.data || []; // Return data if present
   } catch (error) {
-    console.error(
-      "Error fetching trending anime:",
-      error
-    );
+    console.error("Error fetching trending anime:", error);
     return []; // Fallback in case of failure
   }
 };
 
-// for 100 best Anime 
+// for 100 best Anime
 export const fetchTopAnime = async () => {
   try {
-    const response = await fetchAniList(
-      top100AnimeQuery
-    );
+    const response = await fetchAniList(top100AnimeQuery);
     return response.data || []; // Return data if present
   } catch (error) {
-    console.error(
-      "Error fetching trending anime:",
-      error
-    );
+    console.error("Error fetching trending anime:", error);
     return []; // Fallback in case of failure
   }
 };
 // for Favorite Anime list
 export const fetchFavouritesAnime = async () => {
   try {
-    const response = await fetchAniList(
-      favouritesAnimeQuery
-    );
+    const response = await fetchAniList(favouritesAnimeQuery);
     return response.data || []; // Return data if present
   } catch (error) {
-    console.error(
-      "Error fetching trending anime:",
-      error
-    );
+    console.error("Error fetching trending anime:", error);
     return []; // Fallback in case of failure
   }
 };
 
-//fetching func 
-const fetchAniList = async query => {
+//fetching func
+const fetchAniList = async (query) => {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      body: JSON.stringify({ query })
+      body: JSON.stringify({ query }),
     });
 
     if (!response.ok) {
-      throw new Error(
-        `HTTP Error: ${response.status}`
-      );
+      throw new Error(`HTTP Error: ${response.status}`);
     }
 
     const result = await response.json();
 
     if (result.errors) {
-      console.error(
-        "GraphQL Errors:",
-        result.errors
-      );
-      throw new Error(
-        "Failed to fetch GraphQL data"
-      );
+      console.error("GraphQL Errors:", result.errors);
+      throw new Error("Failed to fetch GraphQL data");
     }
 
     return result;
   } catch (error) {
-    console.error(
-      "Fetch AniList Error:",
-      error
-    );
+    console.error("Fetch AniList Error:", error);
     throw error; // Re-throw for caller handling
   }
-}
-
+};

@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import  { fetchPopularAnime }  from "../../../actions/ApiData.js";
-import { NextResponse } from 'next/server';
+import { fetchPopularAnime } from "../../../actions/ApiData.js";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -9,6 +9,9 @@ export async function GET() {
     return NextResponse.json(data); // Return the data as JSON
   } catch (error) {
     console.error("Error fetching popular anime:", error);
-    return NextResponse.json({ error: "Failed to fetch popular anime" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch popular anime" },
+      { status: 500 },
+    );
   }
 }

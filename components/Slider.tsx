@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 // Shadcn styles
 import { Button } from "./ui/button";
 // Import Swiper styles
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/effect-coverflow";
@@ -15,7 +15,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import { FaStar } from "react-icons/fa6";
 import { Skeleton } from "./ui/skeleton";
-
 
 // Define the type for API response data
 interface Anime {
@@ -37,7 +36,7 @@ const Slider = () => {
   useEffect(() => {
     const fetchAnime = async () => {
       try {
-        const response = await fetch('/api/popular-anime');
+        const response = await fetch("/api/popular-anime");
         if (!response.ok) {
           throw new Error(`HTTP Error: ${response.status}`);
         }
@@ -56,7 +55,7 @@ const Slider = () => {
 
   return (
     <>
-      {loading ? (      
+      {loading ? (
         <Skeleton className="SkeletonCard h-[65vh] w-[100%]" />
       ) : (
         <Swiper
@@ -64,7 +63,7 @@ const Slider = () => {
           speed={999}
           loop={true}
           modules={[EffectCoverflow, Autoplay]}
-          slidesPerView={'auto'}
+          slidesPerView={"auto"}
           effect="coverflow"
           spaceBetween={0}
         >
@@ -73,7 +72,9 @@ const Slider = () => {
               <div className="container">
                 <Image
                   src={anime.coverImage.extraLarge}
-                  alt={anime.title.english || anime.title.romaji || "Unknown Title"}
+                  alt={
+                    anime.title.english || anime.title.romaji || "Unknown Title"
+                  }
                   layout="responsive"
                   width={500}
                   height={300}
@@ -82,16 +83,28 @@ const Slider = () => {
                 <div className="InfoContainer m-4 text-left">
                   <div className="flex items-center justify-start">
                     <FaStar size={15} style={{ color: "yellow" }} />
-                    <h2 className="Trending pl-1 pt-1 text-yellow-400">{anime.averageScore ? anime.averageScore.toFixed(1) : "N/A"}</h2>
+                    <h2 className="Trending pl-1 pt-1 text-yellow-400">
+                      {anime.averageScore
+                        ? anime.averageScore.toFixed(1)
+                        : "N/A"}
+                    </h2>
                   </div>
-                  <h1 className="Title">{anime.title.english || anime.title.romaji || "Unknown Title"}</h1>
-                  <p className="Description text-sm w-auto block-words mt-1 mb-1 line-clamp-5 text-gray-400">{anime.description}</p>
+                  <h1 className="Title">
+                    {anime.title.english ||
+                      anime.title.romaji ||
+                      "Unknown Title"}
+                  </h1>
+                  <p className="Description text-sm w-auto block-words mt-1 mb-1 line-clamp-5 text-gray-400">
+                    {anime.description}
+                  </p>
                   <div className="Addtion mb-2 space-x-3 h-auto">
                     <h1>
                       <FaPlayCircle className="m-1 self-center" size={13} />
                       {anime.format || "Unknown Format"}
                     </h1>
-                    <h1 className={`State ${anime.status === "RELEASING" ? "text-green-500" : "text-red-500"}`}>
+                    <h1
+                      className={`State ${anime.status === "RELEASING" ? "text-green-500" : "text-red-500"}`}
+                    >
                       {anime.status || "Unknown Status"}
                     </h1>
                     <h1>
@@ -101,7 +114,10 @@ const Slider = () => {
                         : "Unknown Date"}
                     </h1>
                   </div>
-                  <Button className="SliderButton rounded-full" variant="styled">
+                  <Button
+                    className="SliderButton rounded-full"
+                    variant="styled"
+                  >
                     <FaPlay size={12} /> Play Now
                   </Button>
                 </div>
