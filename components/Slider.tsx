@@ -94,7 +94,7 @@ const Slider = () => {
                       anime.title.romaji ||
                       "Unknown Title"}
                   </h1>
-                  <p className="Description text-sm w-auto block-words mt-1 mb-1 line-clamp-5 text-gray-400">
+                  <p className="Description  text-sm w-auto block-words mt-1 mb-1 line-clamp-5 text-gray-400">
                     {anime.description}
                   </p>
                   <div className="Addtion mb-2 space-x-3 h-auto">
@@ -111,11 +111,11 @@ const Slider = () => {
                       <MdDateRange className="m-1 self-center" size={13} />
                       {anime.startDate
                         ? `${anime.startDate.year} ${anime.startDate.month}, ${anime.startDate.day}`
-                        : "Unknown Date"}
+                        : "Unknown Date"}     
                     </h1>
                   </div>
                   <Button
-                    className="SliderButton rounded-full"
+                    className="SliderButton rounded-lg"
                     variant="styled"
                   >
                     <FaPlay size={12} /> Play Now
