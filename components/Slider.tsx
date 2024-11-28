@@ -115,7 +115,7 @@ const Slider = () => {
                     </h1>
                   </div>
                   <Button
-                    className="SliderButton rounded-lg"
+                    className="SliderButton rounded-xl"
                     variant="styled"
                   >
                     <FaPlay size={12} /> Play Now
