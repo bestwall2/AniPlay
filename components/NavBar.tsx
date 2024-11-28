@@ -59,7 +59,7 @@ const Navbar = () => {
               data-dropdown-placement="bottom"
             >
               <div className="flex items-center space-x-3">
-                <div className="bg-blue-800 transition-transform ease-in delay-2 hover:scale-90 shadow-xl rounded-xl p-2">
+                <div className="bg-sky-800 transition-transform ease-in delay-2 hover:scale-90 shadow-xl rounded-xl p-2">
                   <FaSearch size={20} />
                 </div>
 
@@ -75,7 +75,7 @@ const Navbar = () => {
       </nav>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="bg-blue-800 shadow-xl w-[50px]  transition-transform ease-in delay-2 hover:scale-90 flex items-center justify-center h-[50px] fixed rounded-full bottom-0 mb-5 left-10 z-50">
+          <div className="bg-sky-800 shadow-xl w-[50px]  transition-transform ease-in delay-2 hover:scale-90 flex items-center justify-center h-[50px] fixed rounded-full bottom-0 mb-5 left-10 z-50">
             <BiSolidCategory size={22} />
           </div>
         </DropdownMenuTrigger>

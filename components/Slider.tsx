@@ -15,6 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import { FaStar } from "react-icons/fa6";
 import { Skeleton } from "./ui/skeleton";
+import { HiOutlineInformationCircle } from "react-icons/hi";
 
 // Define the type for API response data
 interface Anime {
@@ -81,7 +82,7 @@ const Slider = () => {
                 />
                 <div className="ContainerLayout"></div>
                 <div className="InfoContainer m-4 text-left">
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-start ">
                     <FaStar size={15} style={{ color: "yellow" }} />
                     <h2 className="Trending pl-1 pt-1 text-yellow-400">
                       {anime.averageScore
@@ -115,11 +116,19 @@ const Slider = () => {
                     </h1>
                   </div>
                   <Button
-                    className="SliderButton rounded-xl"
+                    className="SliderButton rounded-xl mr-2"
                     variant="styled"
                   >
-                    <FaPlay size={12} /> Play Now
+                    <FaPlay size={12} /> Watch 
                   </Button>
+
+                  <Button
+                    className="SliderButton rounded-xl "
+                    variant="outline"
+                  >
+                    <HiOutlineInformationCircle />  Info 
+                  </Button>
+                  
                 </div>
               </div>
             </SwiperSlide>
