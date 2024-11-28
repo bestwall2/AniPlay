@@ -8,7 +8,7 @@ export let PopularAnimeQuery = `
 				lastPage
 				hasNextPage
 			}
-			media(sort : POPULARITY_DESC, type: ANIME) {
+			media(type: ANIME, status: RELEASING, sort: TRENDING_DESC) {
 				idMal
 				title {
 					romaji
