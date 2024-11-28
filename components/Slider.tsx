@@ -85,9 +85,9 @@ const Slider = () => {
                   <div className="flex items-center justify-start ">
                     <FaStar size={15} style={{ color: "yellow" }} />
                     <h2 className="Trending pl-1 pt-1 text-yellow-400">
-                      {anime.averageScore
-                        ? anime.averageScore.toFixed(1)
-                        : "N/A"}
+                      {
+                          anime.averageScore ? anime.averageScore.toString() : "N/A"
+                        }
                     </h2>
                   </div>
                   <h1 className="Title">
