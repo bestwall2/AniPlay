@@ -59,7 +59,14 @@ body {
   width: 100%;
   height: auto;
 }
-
+.swiper-animation {
+    .swiper-wrapper {
+      -webkit-transition-timing-function: linear;
+      -o-transition-timing-function: linear;
+      transition-timing-function: linear;
+    }
+  }
+  
 .swiper-slide {
   text-align: center;
   font-size: 25px;

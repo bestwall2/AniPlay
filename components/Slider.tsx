@@ -126,7 +126,7 @@ const Slider = () => {
                     className="SliderButton rounded-xl "
                     variant="outline"
                   >
-                    <HiOutlineInformationCircle />  Info 
+                    <HiOutlineInformationCircle size={20} />  Info 
                   </Button>
                   
                 </div>

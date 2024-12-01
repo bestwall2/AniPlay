@@ -62,6 +62,7 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
             slidesPerView={2.9}
             spaceBetween={4}
             navigation={true}
+            className="swiper-animation"
             freeMode={true}
           >
             {Array.from({ length: 10 }).map((_, index) => (
