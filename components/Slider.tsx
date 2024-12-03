@@ -67,6 +67,8 @@ const Slider = () => {
           slidesPerView={"auto"}
           effect="coverflow"
           spaceBetween={0}
+          
+
         >
           {animeList.map((anime) => (
             <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>

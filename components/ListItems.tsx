@@ -12,6 +12,8 @@ import "swiper/css";
 import { FreeMode } from "swiper/modules";
 import DiscoverCard from "./CardsComp/DiscoverCard";
 import { Skeleton } from "./ui/skeleton";
+import { useRouter } from 'next/navigation';
+
 
 // Define TypeScript interface for props
 interface ListItemsProps {
@@ -34,7 +36,7 @@ interface Anime {
 const ListItems = ({ geners, apiPath }: ListItemsProps) => {
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-
+  const router = useRouter();
   useEffect(() => {
     const fetchAnime = async () => {
       try {
@@ -76,18 +78,20 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
           modules={[Navigation, FreeMode]}
           slidesPerView={2.9}
           spaceBetween={4}
-          navigation={true}
+          navigation={false}
           freeMode={true}
           className="swiper-animation"
         >
           {animeList.map((anime) => {
             const animeUrl = `/anime/info/${anime.id}`;
+
             return (
               <SwiperSlide
                 key={`${anime.id}-${anime.title.romaji}`}
                 className="cursor-pointer"
+                onClick={()=> router.push(animeUrl)}
               >
-                <Link href={animeUrl}>
+                
                   <DiscoverCard
                     cardbadge={
                       anime.averageScore ? anime.averageScore.toString() : "N/A"
@@ -97,8 +101,10 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
                     }
                     info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
                     img={anime.coverImage.extraLarge}
+                    
+      
                   />
-                </Link>
+                
               </SwiperSlide>
             );
           })}
