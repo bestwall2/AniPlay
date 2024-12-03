@@ -204,7 +204,7 @@ query($perPage: Int, $page: Int) {
 			lastPage
 			hasNextPage
 		}
-		media ( seasonYear: 2025,sort :POPULARITY_DESC, type : ANIME){
+		media ( seasonYear: 2024,sort :POPULARITY_DESC, type : ANIME){
 			id
 			idMal
 			title {

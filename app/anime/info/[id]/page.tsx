@@ -1,15 +1,15 @@
 "use client";
 
-import { useRouter } from 'next/router';
+import React from "react";
 
-export default function AnimeInfoLayout() {
-  const router = useRouter();
-  const { id } = router.query;
+export default function AnimeInfoLayout({ params }) {
+  // Unwrap the `params` Promise
+  const { id } = React.use(params);
 
   return (
-    <>
-      <h1>Anime ID: {id}</h1>
-     
-    </>
+    <div>
+      <h1>Anime Info</h1>
+      <p>Anime ID: {id}</p>
+    </div>
   );
 }
