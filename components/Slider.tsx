@@ -57,7 +57,7 @@ const Slider = () => {
   return (
     <>
       {loading ? (
-        <Skeleton className="SkeletonCard h-[65vh] w-[100%]" />
+        <Skeleton className="SkeletonCard h-[60vh] w-[100%]" />
       ) : (
         <Swiper
           autoplay={{ delay: 5000, disableOnInteraction: false }}

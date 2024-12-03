@@ -1,9 +1,11 @@
 "use client";
 
+
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import Link from "next/link";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css";
@@ -33,12 +35,11 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
   const [animeList, setAnimeList] = useState<Anime[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Fetch anime data when the component mounts
   useEffect(() => {
     const fetchAnime = async () => {
       try {
         const data = await fetch(apiPath).then((res) => res.json());
-        setAnimeList(data.Page?.media.slice(0, 25) || []); // Ensure the response has a `data` field
+        setAnimeList(data.Page?.media.slice(0, 25) || []);
       } catch (error) {
         console.error("Error fetching anime:", error);
       } finally {
@@ -50,60 +51,66 @@ const ListItems = ({ geners, apiPath }: ListItemsProps) => {
   }, [apiPath]);
 
   return (
-    <>
-      <div className="ItemGeners mt-2 mb-2">
-        <div className="Geners flex text-gray-200 items-center mb-2 space-x-2">
-          <span className="w-1.5 rounded-full h-6 bg-sky-500"></span>
-          <p>{geners}</p>
-        </div>
-        {loading ? (
-          <Swiper
-            modules={[Navigation, FreeMode]}
-            slidesPerView={2.9}
-            spaceBetween={4}
-            navigation={true}
-            className="swiper-animation"
-            freeMode={true}
-          >
-            {Array.from({ length: 10 }).map((_, index) => (
-              <SwiperSlide key={`skeleton-${index}`}>
-                <Skeleton className="SkeletonCard h-[22vh] w-[110px] rounded-lg" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <Swiper
-            modules={[Navigation, FreeMode]}
-            slidesPerView={2.9}
-            spaceBetween={4}
-            navigation={true}
-            freeMode={true}
-          >
-            {animeList.map((anime) => (
-              <SwiperSlide key={`${anime.id}-${anime.title.romaji}`}>
-                <DiscoverCard
-                  cardbadge={
-                    anime.averageScore ? anime.averageScore.toString() : "N/A"
-                  }
-                  title={
-                    anime.title.english || anime.title.romaji || "Unknown Title"
-                  }
-                  info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
-                  img={anime.coverImage.extraLarge}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
+    <div className="ItemGeners mt-2 mb-2">
+      <div className="Geners flex text-gray-200 items-center mb-2 space-x-2">
+        <span className="w-1.5 rounded-full h-6 bg-sky-500"></span>
+        <p>{geners}</p>
       </div>
-    </>
+      {loading ? (
+        <Swiper
+          modules={[Navigation, FreeMode]}
+          slidesPerView={2.9}
+          spaceBetween={4}
+          navigation={true}
+          className="swiper-animation"
+          freeMode={true}
+        >
+          {Array.from({ length: 10 }).map((_, index) => (
+            <SwiperSlide key={`skeleton-${index}`}>
+              <Skeleton className="SkeletonCard h-[22vh] w-[110px] rounded-lg" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <Swiper
+          modules={[Navigation, FreeMode]}
+          slidesPerView={2.9}
+          spaceBetween={4}
+          navigation={true}
+          freeMode={true}
+          className="swiper-animation"
+        >
+          {animeList.map((anime) => {
+            const animeUrl = `/anime/info/${anime.id}`;
+            return (
+              <SwiperSlide
+                key={`${anime.id}-${anime.title.romaji}`}
+                className="cursor-pointer"
+              >
+                <Link href={animeUrl}>
+                  <DiscoverCard
+                    cardbadge={
+                      anime.averageScore ? anime.averageScore.toString() : "N/A"
+                    }
+                    title={
+                      anime.title.english || anime.title.romaji || "Unknown Title"
+                    }
+                    info={`${anime.format} • ${anime.startDate?.year || "Unknown Year"} • ${anime.episodes || "N/A"} Episodes`}
+                    img={anime.coverImage.extraLarge}
+                  />
+                </Link>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
+    </div>
   );
 };
 
-// Prop types for fallback validation
 ListItems.propTypes = {
   geners: PropTypes.string.isRequired,
-  apiPath: PropTypes.string.isRequired, // Marking geners as required
+  apiPath: PropTypes.string.isRequired,
 };
 
 export default ListItems;

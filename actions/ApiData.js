@@ -1,5 +1,5 @@
 import {
-  PopularAnimeQuery,
+  seasonal,
   favouritesAnimeQuery,
   TrendingAnimeQuery,
   top100AnimeQuery,
@@ -21,7 +21,7 @@ export const fetchTrendingAnime = async () => {
 //for Popular Anime
 export const fetchPopularAnime = async () => {
   try {
-    const response = await fetchAniList(PopularAnimeQuery);
+    const response = await fetchAniList(seasonal);
     return response.data || []; // Return data if present
   } catch (error) {
     console.error("Error fetching trending anime:", error);
