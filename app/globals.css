@@ -207,3 +207,12 @@ body {
 .SliderButton {
   font-size: 18px;
 }
+
+.containerImageInfo {
+  object-fit: cover;
+  width: 100%;
+  height: max-content;
+  background: red;
+
+}
+

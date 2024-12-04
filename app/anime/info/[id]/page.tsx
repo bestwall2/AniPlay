@@ -1,14 +1,17 @@
 
 
 import React from "react";
+import Info from '../../../../components/pages/InfoPages/Info'
+
 
 export default function AnimeInfoLayout({ params }) {
   // Unwrap the `params` Promise
   const { id } = React.use(params);
 
   return (
-    <div>
-      <h1>Anime Info</h1>
+  <div>
+    <Info/>
+
       <p>Anime ID: {id}</p>
     </div>
   );
