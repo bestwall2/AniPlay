@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import Link from "next/link";
+//import Link from "next/link";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import "swiper/css";
