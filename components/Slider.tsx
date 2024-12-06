@@ -81,6 +81,7 @@ const Slider = () => {
                   layout="responsive"
                   width={500}
                   height={300}
+priority
                 />
                 <div className="ContainerLayout"></div>
                 <div className="InfoContainer m-4 text-left">
