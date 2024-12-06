@@ -22,7 +22,7 @@ const DiscoverCard: React.FC<ListItemsProps> = ({
     <div className="Listcontainer  relative transition-transform ease-in delay-2 hover:scale-90 rounded-2xl" >
       {/* Optimized Next.js Image */}
 
-      <Image src={img} alt={title} layout="fill" objectFit="cover" />
+      <Image src={img} alt={title} layout="fill" objectFit="cover" priority />
 
       <div className="CardShadow absolute">
         <p className="Title  absolute  content-center  text-center line-clamp-2">
