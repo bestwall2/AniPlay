@@ -18,7 +18,7 @@ export default async function AnimeInfoLayout({
   return (
     <div>
       <Info />
-      <p>Anime ID: {id}</p>
+      <p>Anime haha ID: {id}</p>
     </div>
   );
 }
