@@ -211,8 +211,14 @@ body {
 .containerImageInfo {
   object-fit: cover;
   width: 100%;
-  height: max-content;
-  background: red;
+  height: auto;
+ 
+  }
+.BackgroundImageOfInfo{
+  height: 10vh;
+}
+.frogroundShadow {
+  height: 30vh;
+  background: linear-gradient(to bottom, transparent , black 80%);
 
 }
-
